@@ -12,7 +12,8 @@ import "./database.js"
 import realTimeChat from "./Routes/Chat.js";
 import cartView from "./Routes/cartView.js";
 import sessionRouter from "./Routes/sessions.js";
-import initializePassport from './config/passport.js';
+//import initializePassport from './config/passport.js';
+import initializePassport from './config/passportCopy.js';
 import passport from 'passport';
 
 
