@@ -47,20 +47,7 @@ router.get('/logout', (req,res)=>{
     })
 })
 
-router.post('/restartPassword', async (req, res)=>{
-    const {email, password } = req.body;
-    
-    if(!email || !password ) return res.status(400).send({status:"error", error:"Datos incorrectos"})
 
-    const user = await userModel.findOne({email});
-    if(!user) return res.status(400).send({status:"error", error:"Datos incorrectos"})
-    
-    const newHashedPassword = createHash(password);
-
-    await userModel.updateOne({_id:user._id},{$set:{password:newHashedPassword}});
-
-    res.send({status:"success", message:"Contraseña actualizada"})
-})
 //github
 
 router.get('/github', passport.authenticate('github', {scope:['user:email']}), async (req,res)=>{})
