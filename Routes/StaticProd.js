@@ -11,19 +11,22 @@ const publicAcces = (req,res,next) =>{
 }
 
 const privateAcces = (req,res,next)=>{
-  if(!req.session.user) return res.redirect('/');
+  if(!req.session.user) return res.redirect('/prods');
   next();
 }
 
-staticProd.get('/register', publicAcces, (req,res)=>{
-  res.render('register')
+staticProd.get('/register', (req,res)=>{
+  res.render('register') 
+  
 })
 
 staticProd.get('/', publicAcces, (req,res)=>{
   res.render('login')
 })
 
-
+staticProd.get('/usuario', (req,res)=>{
+  res.render('profile')
+})
 
 staticProd.get("/prods",  privateAcces, async (req, res) => {
   const { page = 1, limit: queryLimit, sort, descripcion } = req.query;
